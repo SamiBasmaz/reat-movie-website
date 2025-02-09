@@ -26,7 +26,8 @@ const AppProvider = ({ children }) => {
             console.log(data);
             if(data.Response === "True"){
                 setIsLoading(false)
-                setMovie(data.Search);
+                if(data.Search.length===0)setMovie([])
+                else setMovie(data.Search);
             }else {
                 setIsError({
                     show: true,
