@@ -1,14 +1,12 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
-// setting the api link
-export const API_URL = `https: //www.omdbapi.com/?&apikey=${process.env.REACT_APP_MOVIE_KEY}`;
-/* plz subsribe to thapa technical channel 
-          https://www.youtube.com/thapatechnical
-         */
+
+export const API_URL = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_API_KEY}`;
+
 
 const useFetch = (apiParams) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState({ show: "false", msg: "" });
+  const [isError, setIsError] = useState({ show: false, msg: "" });
   const [movie, setMovie] = useState(null);
 
   const getMovie = async (url) => {
@@ -21,12 +19,15 @@ const useFetch = (apiParams) => {
       if (data.Response === "True") {
         setIsLoading(false);
         setMovie(data.Search || data);
-        setIsError({ show: "false", msg: "" });
+        setIsError({ show: false, msg: "" });
       } else {
-        setIsError({ show: "true", msg: data.Error });
+        setIsLoading(false);
+        setIsError({ show: true, msg: "Movie not found!" });
       }
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
+      setIsError({ show: true, msg: "Something went wrong!" });
     }
   };
 

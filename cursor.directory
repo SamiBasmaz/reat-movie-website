@@ -1,0 +1,23 @@
+This is a Movie Website project built with React.js and Node.js.
+
+Project Structure:
+/frontend - Contains React.js frontend code
+/backend - Contains Node.js backend code
+/database - Contains database schemas and migrations
+
+Development Guidelines:
+- Use ES6+ features
+- Follow React best practices
+- Use camelCase for variables and functions
+- Use PascalCase for component names
+- Write clean, maintainable code with proper comments
+
+The website allows users to:
+- Browse movies
+- Search for movies
+- View movie details
+- Rate and review movies
+- Create user accounts
+- Save favorite movies
+
+Please help maintain consistent code style and suggest improvements when possible.

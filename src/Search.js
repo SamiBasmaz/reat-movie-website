@@ -14,6 +14,8 @@ const Search = () => {
       value={query} 
       onChange={(e) => setQuery(e.target.value)}>
         
+
+        
       </input>
       </div>
     </form>
@@ -26,4 +28,4 @@ const Search = () => {
   </>
 }
 
-export default Search
+export default Search 
