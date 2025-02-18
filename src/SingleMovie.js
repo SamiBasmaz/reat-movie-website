@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { API_URL } from './useFetch'
 import { useState, useEffect } from 'react'
 import './SingleMovie.css'
@@ -52,7 +52,10 @@ const SingleMovie = () => {
   } = movie
 
   return (
-    <section className="single-movie">
+    <section className="movie-section">
+      <Link to="/" className="back-btn">
+        <span>←</span> Back to Home
+      </Link>
       <div className="movie-card">
         <div className="movie-poster">
           <img src={Poster !== "N/A" ? Poster : "https://via.placeholder.com/400"} alt={Title} />

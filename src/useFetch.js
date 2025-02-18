@@ -31,16 +31,18 @@ const useFetch = (apiParams) => {
     }
   };
 
-  // debouncing in react js
+  // Optimize edilmiş debouncing
   useEffect(() => {
-    let timeOut = setTimeout(() => {
-      getMovie(`${API_URL}&s=${apiParams}`);
-    }, 1000);
-    console.log("set");
-    return () => {
-      clearTimeout(timeOut);
-      console.log("clear");
-    };
+    const timeOut = setTimeout(() => {
+      if (apiParams) {
+        getMovie(`${API_URL}&s=${apiParams}`);
+      } else {
+        setMovie(null);
+        setIsLoading(false);
+      }
+    }, 300); // Debouncing süresini 300ms'ye düşürdük
+
+    return () => clearTimeout(timeOut);
   }, [apiParams]);
 
   return { isLoading, isError, movie };

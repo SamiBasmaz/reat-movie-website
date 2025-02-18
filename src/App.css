@@ -173,7 +173,18 @@ img {
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, #1a1a1a 0%, #2c3e50 100%);
+  background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  position: relative;
+}
+
+.movie-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0.2) 100%);
 }
 
 .loading {
@@ -186,81 +197,144 @@ img {
 
 .movie-card {
   background: rgba(255, 255, 255, 0.95);
-  border-radius: 2rem;
+  border-radius: 2.5rem;
   overflow: hidden;
   width: 100%;
   max-width: 100rem;
   display: grid;
   grid-template-columns: minmax(35rem, 40%) 1fr;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
   margin: 0 auto;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
 }
 
 .movie-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
 }
 
 .movie-poster {
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+  background: linear-gradient(to bottom, #0f0c29, #302b63);
 }
 
 .movie-poster img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  margin: 0;
-  border-radius: 0;
-  min-height: 50rem;
-  background-color: #000;
+  width: 90%;
+  height: auto;
+  max-height: 55rem;
+  object-fit: contain;
+  border-radius: 1rem;
+  margin: 0 auto;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   transition: transform 0.5s ease;
 }
 
 .movie-poster:hover img {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
 .movie-info {
-  padding: 3rem;
+  padding: 3.5rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+}
+
+.back-btn {
+  position: fixed;
+  top: 4rem;
+  left: 4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 2.4rem;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  border-radius: 5rem;
+  font-size: 1.6rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.back-btn span {
+  font-size: 2.2rem;
+  transition: transform 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: translateX(-5px);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.back-btn:hover span {
+  transform: translateX(-3px);
 }
 
 .movie-info h2 {
   font-size: 3.2rem;
-  color: #2c3e50;
+  color: #1e3c72;
   margin-bottom: 2rem;
   font-weight: 600;
   border-bottom: 3px solid #3498db;
   padding-bottom: 1rem;
   display: inline-block;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .plot {
   font-size: 1.6rem;
   line-height: 1.8;
-  color: #34495e;
+  color: #2c3e50;
   margin-bottom: 2.5rem;
   font-weight: 400;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 1rem;
 }
 
 .details {
   display: grid;
   gap: 1.5rem;
+  background: rgba(52, 152, 219, 0.05);
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.05);
 }
 
 .details p {
   font-size: 1.5rem;
-  color: #2c3e50;
+  color: #34495e;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.details p:hover {
+  background: rgba(52, 152, 219, 0.1);
+  transform: translateX(8px);
 }
 
 .details span {
   font-weight: 600;
-  color: #3498db;
+  color: #2980b9;
   min-width: 120px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.05);
 }
 
 .error {
@@ -268,11 +342,11 @@ img {
   font-size: 2rem;
   text-align: center;
   padding: 2rem;
-  background: rgba(231, 76, 60, 0.8);
+  background: linear-gradient(to right, #ff6b6b, #ff8787);
   border-radius: 1rem;
   margin: 2rem auto;
   max-width: 60rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
 }
 
 /* Responsive tasarım için mevcut medya sorgularını koruyalım */
@@ -281,12 +355,17 @@ img {
     grid-template-columns: 1fr;
   }
   
+  .movie-poster {
+    padding: 1rem 0;
+  }
+  
   .movie-poster img {
-    height: 40rem;
+    width: 85%;
+    max-height: 45rem;
   }
   
   .movie-info {
-    padding: 2rem;
+    padding: 2.5rem;
   }
   
   .movie-info h2 {
@@ -295,6 +374,17 @@ img {
   
   .details p {
     font-size: 1.4rem;
+  }
+  
+  .back-btn {
+    top: 2rem;
+    left: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+  }
+  
+  .back-btn span {
+    font-size: 2rem;
   }
 }
 
@@ -309,5 +399,11 @@ img {
   
   input {
     max-width: 30rem;
+  }
+  
+  .back-btn {
+    top: 1.5rem;
+    left: 1.5rem;
+    padding: 0.8rem 1.6rem;
   }
 }
